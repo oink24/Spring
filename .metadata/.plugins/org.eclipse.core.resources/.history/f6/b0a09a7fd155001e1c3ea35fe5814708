@@ -1,9 +1,0 @@
-package sub2;
-
-public class Computer {
-
-	private CPU cpu;
-	private RAM ram;
-	private HDD hdd;
-	
-}
