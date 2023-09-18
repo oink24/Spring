@@ -1,0 +1,20 @@
+package sub1;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+
+public class SpringMain {
+	public static void main(String[] args) {
+		
+		ApplicationContext ctx = new GenericXmlApplicationContext("application.xml");
+		
+		if (ctx != null)
+		{
+			Hello hello = (Hello) ctx.getBean("hello");
+			Hello welcome = (Hello) ctx.getBean("welcome");
+			Hello greeting = (Hello) ctx.getBean("greeting");
+			
+			System.out.println("Hello Spring Framework!");
+		}
+	}
+}
