@@ -19,8 +19,8 @@
 	    <version>1.9.20.1</version>
 	</dependency>
 	<dependency>
-		<groupId>Ch01</groupId>
-		<artifactId>Ch01</artifactId>
+		<groupId>Ch03</groupId>
+		<artifactId>Ch03</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</dependency>
   </dependencies>
