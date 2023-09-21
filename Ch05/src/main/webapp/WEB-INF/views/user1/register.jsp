@@ -8,7 +8,9 @@
 	<body>
 		<h3>user1 등록</h3>
 		
-		<form action="/Ch04/user1/register" method="post">
+		<a href="/Ch05/index">메인</a>
+		<a href="/Ch05/user1/list">user1 목록</a>
+		<form action="/Ch05/user1/register" method="post">
 			<table border="1">
 				<tr>
 					<td>아이디</td>

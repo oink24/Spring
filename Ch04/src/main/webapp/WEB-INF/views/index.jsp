@@ -18,9 +18,5 @@
 		<h4>Annotation 실습</h4>
 		<a href="/Ch04/annotation/param">@RequestParam 실습</a>
 		<a href="/Ch04/annotation/model">@ModelAttribute 실습</a>
-		
-		<h4>user1 실습</h4> <!-- DB연동할거라 JDBC실습 내일(9/20) 예정 -->
-		<a href="/Ch04/user1/register">user1 등록</a>
-		<a href="/Ch04/user1/list">user1 목록</a>
 	</body>
 </html>
