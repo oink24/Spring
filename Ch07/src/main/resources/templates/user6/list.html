@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>user6::list</title>
+	</head>
+	<body>
+		<h3>user6 목록</h3>
+		
+		<a th:href="@{/user6/register}">user6 등록</a>
+		<form action="/Ch07/user6/register" method="post">
+			<table border="1">
+				<tr>
+					<td>아이디</td>
+					<td>이름</td>
+					<td>생년월일</td>
+					<td>성별</td>
+					<td>나이</td>
+					<td>주소</td>
+					<td>휴대폰</td>
+					<td>관리</td>
+				</tr>
+				<tr th:each="user:${users}">
+					<td>[[${user.uid}]]</td>
+					<td>[[${user.name}]]</td>
+					<td>[[${user.birth}]]</td>
+					<td>
+						<span th:if="${user.gender == 1}">남자</span>
+						<span th:if="${user.gender == 2}">여자</span>
+					</td>
+					<td>[[${user.age}]]</td>
+					<td>[[${user.address}]]</td>
+					<td>[[${user.hp}]]</td>
+					<td>
+						<a th:href="@{/user6/modify?uid={uid}(uid=${user.uid})}">수정</a>
+						<a th:href="@{/user6/delete?uid={uid}(uid=${user.uid})}">삭제</a>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>
