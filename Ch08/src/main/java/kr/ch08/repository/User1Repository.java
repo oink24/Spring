@@ -50,5 +50,5 @@ public interface User1Repository extends JpaRepository<User1Entity, String> {
 	public List<User1Entity> selectUser1ByNameParam(@Param("name") String name);
 	
 	@Query("select u1.uid, u1.name, u1.age from User1Entity as u1 where u1.uid = :uid")
-	public Object[] selectUser1ByUid(@Param("uid") String uid);
+	public List<Object[]> selectUser1ByUid(@Param("uid") String uid);
 }

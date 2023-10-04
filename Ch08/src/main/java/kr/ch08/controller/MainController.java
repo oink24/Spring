@@ -177,8 +177,15 @@ public class MainController {
 	@GetMapping("/query23")
 	public String query23() {
 		
-		Object[] object = repo.selectUser1ByUid("B101");
-		System.out.println(object);
+		List<Object[]> result = repo.selectUser1ByUid("B101");
+		
+		for (Object[] obj : result)
+		{
+			System.out.println("obj[0] : " + obj[0]);
+			System.out.println("obj[1] : " + obj[1]);
+			System.out.println("obj[2] : " + obj[2]);
+		}
+		
 		return "redirect:/";
 	}
 }
