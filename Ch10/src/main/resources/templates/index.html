@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Ch010:index</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<script th:src="@{/js/user1.js}"></script>
+	</head>
+	<body>
+		<h3>Ch10. Spring REST API 실습</h3>
+		
+		<!--
+			POSTMAN API 테스트 도구 활용
+			 - 목록: GET /user1
+			 - 조회: GET /user1/{id}
+			 - 등록: POST /user1
+			 - 수정: PUT /user1
+			 - 삭제: DELETE /user1/{id}
+		-->
+		<h4>User1</h4>
+		<button id="btnUser1s">목록</button>
+		<button id="btnUser1">조회</button>
+		<button id="btnUser1Register">등록</button>
+		<button id="btnUser1Modify">수정</button>
+		<button id="btnUser1Delete">삭제</button>
+	</body>
+</html>
