@@ -15,7 +15,7 @@ public class UserDTO {
     private String uid;
     private String pass1;
     private String name;
-    private String nickname;
+    private String nick;
     private String email;
     private String hp;
     private String role;
@@ -31,7 +31,7 @@ public class UserDTO {
                 .uid(uid)
                 .pass(pass1)
                 .name(name)
-                .nickname(nickname)
+                .nick(nick)
                 .email(email)
                 .hp(hp)
                 .role(role)

@@ -6,6 +6,7 @@ import kr.co.sboard.entity.UserEntity;
 import kr.co.sboard.repository.TermsRepository;
 import kr.co.sboard.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,12 +18,20 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public TermsEntity findByTerms() {
         return termsRepository.findById(1).get();
     }
 
     public void save(UserDTO dto) {
+        dto.setPass1(passwordEncoder.encode(dto.getPass1())); // 비밀번호 암호화
         UserEntity entity = dto.toEntity(); // DTO를 Entity로 반환
         userRepository.save(entity); // DB INSERT
+    }
+
+    public int countUid(String uid) {
+        return userRepository.countByUid(uid);
     }
 }

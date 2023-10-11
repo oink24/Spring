@@ -22,8 +22,8 @@ public class UserEntity {
     private String uid;
     private String pass;
     private String name;
-    @Column(name = "nickname", unique = true)
-    private String nickname;
+    @Column(name = "nick", unique = true)
+    private String nick;
     @Column(name = "email", unique = true)
     private String email;
     @Column(name = "hp", unique = true)
@@ -41,7 +41,7 @@ public class UserEntity {
                 .uid(uid)
                 .pass1(pass)
                 .name(name)
-                .nickname(nickname)
+                .nick(nick)
                 .email(email)
                 .hp(hp)
                 .role(role)

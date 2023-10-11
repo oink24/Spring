@@ -32,10 +32,37 @@
     <script>
         $(function(){
 
+            // 회원가입
             $('#btnRegister').click(function(e){
 
                 e.preventDefault();
                 $('#form').submit();
+            });
+
+            // 아이디 중복체크
+            $('input[name=uid]').focusout(function(){
+                const uid = $(this).val();
+
+                $.ajax({
+                    url: '/user/check/uid/'+uid,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data){
+                        const labelUid = $('.label-uid');
+                        if (data > 0)
+                        {
+                            labelUid.parent().removeClass('has-success');
+                            labelUid.parent().addClass('has-error');
+                            labelUid.text('이미 사용 중인 아이디입니다.');
+                        }
+                        else
+                        {
+                            labelUid.parent().removeClass('has-error');
+                            labelUid.parent().addClass('has-success');
+                            labelUid.text('사용 가능한 아이디입니다.');
+                        }
+                    }
+                });
             });
         });
     </script>
@@ -53,7 +80,7 @@
                         <form id="form" th:action="@{/user/register}" method="post">
                             <fieldset>
                                 <div class="form-group">
-                                    <label>아이디</label>
+                                    <label class="label-uid control-label">아이디</label>
                                     <input class="form-control" name="uid">
                                 </div>
                                 <div class="form-group">
