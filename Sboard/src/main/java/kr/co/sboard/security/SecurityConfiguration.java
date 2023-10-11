@@ -10,9 +10,10 @@ import org.springframework.security.config.annotation.web.configurers.CsrfConfig
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class SecurityConfiguration {
+public class SecurityConfiguration implements WebMvcConfigurer {
 	
 	@Autowired
 	private SecurityUserService service;
@@ -25,7 +26,7 @@ public class SecurityConfiguration {
 			.csrf(CsrfConfigurer::disable) // 메서드 참조 연산자로 람다식을 간결하게 표현
 			// 폼 로그인 설정
 			.formLogin(config -> config.loginPage("/user/login")
-					.defaultSuccessUrl("/list")
+					.defaultSuccessUrl("/")
 					.failureUrl("/user/login?success=100")
 					.usernameParameter("uid")
 					.passwordParameter("pass"))
@@ -34,6 +35,7 @@ public class SecurityConfiguration {
 			.logout(config -> config
 					.logoutUrl("/user/logout")
 					.invalidateHttpSession(true)
+					.clearAuthentication(true)
 					.logoutSuccessUrl("/user/login?success=200"))
 
 			// 인가 권한 설정
@@ -41,7 +43,8 @@ public class SecurityConfiguration {
 					.requestMatchers("/admin/**").hasAuthority("ADMIN")
 					.requestMatchers("/manager/**").hasAnyAuthority("ADMIN", "MANAGER")
 					.requestMatchers("/user/**").permitAll()
-					.anyRequest().permitAll());
+					.requestMatchers("/").authenticated()
+					.requestMatchers("/vendor/**", "/js/**", "/dist/**", "/data/**", "/less/**").permitAll());
 
 		return http.build();
 	}
