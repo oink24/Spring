@@ -13,6 +13,6 @@ public class MainController {
         if (authentication.isAuthenticated())
             return "/index";
         else
-            return "redirect:/user/login";
+            return "forward:/user/login";
     }
 }
