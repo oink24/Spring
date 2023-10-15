@@ -1,18 +1,13 @@
 package kr.ch09.entity;
 
-import java.time.LocalDateTime;
-
-import org.hibernate.annotations.CreationTimestamp;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -30,7 +25,9 @@ public class UserEntity {
 	private String name;
 	private int age;
 	private String hp;
-	private String role; // User, Manager, Admin
+
+	@ColumnDefault("USER")
+	private String role; // USER, MANAGER, ADMIN
 	
 	@CreationTimestamp
 	private LocalDateTime regDate;
