@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import kr.co.sboard.dto.UserDTO;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.time.LocalDateTime;
 
@@ -28,6 +29,7 @@ public class UserEntity {
     private String email;
     @Column(name = "hp", unique = true)
     private String hp;
+    @ColumnDefault("USER")
     private String role;
     private String zip;
     private String addr1;
