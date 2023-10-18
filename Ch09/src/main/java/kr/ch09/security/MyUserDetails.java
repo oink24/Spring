@@ -27,16 +27,19 @@ public class MyUserDetails implements UserDetails{
 	private String name;
 	private int age;
 	private String hp;
-	private String role; // User, Manager, Admin
+	private String role; // USER, MANAGER, ADMIN
 	private LocalDateTime regDate;
 	
 	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() { // 권한을 리턴해주는 메서드(권한이 여러개 있는 유저가 있기때문에 리스트반환)
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+	// 권한을 리턴해주는 메서드(권한이 여러개 있는 유저가 있기때문에 리스트반환)
 		
 		// 계정이 갖는 권한 목록
 		List<GrantedAuthority> authorities = new ArrayList<>();
+
+		// 접두어로 "ROLE_" 입력하면 hasRole(), hasAnyRole() 메서드가 처리되고,
+		// "ROLE_" 접두어를 쓰지않으면 hasAuthority(), hasAnyAuthority() 메서드로 처리됨
 		authorities.add(new SimpleGrantedAuthority(role));
-		
 		return authorities; // 권한목록을 리스트로 리턴
 	}
 

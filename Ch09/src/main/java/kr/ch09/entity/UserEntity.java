@@ -1,11 +1,13 @@
 package kr.ch09.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
 
 import java.time.LocalDateTime;
 
@@ -16,7 +18,8 @@ import java.time.LocalDateTime;
 @ToString
 @Builder
 @Entity
-@Table(name = "User")
+@Table(name = "useruser")
+@DynamicInsert
 public class UserEntity {
 	
 	@Id
@@ -26,7 +29,7 @@ public class UserEntity {
 	private int age;
 	private String hp;
 
-	@ColumnDefault("USER")
+	@ColumnDefault("'USER'")
 	private String role; // USER, MANAGER, ADMIN
 	
 	@CreationTimestamp

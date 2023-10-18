@@ -3,6 +3,8 @@ package kr.ch09.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.AuthorizeHttpRequestsDsl;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
@@ -13,7 +15,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 public class SecurityConfigration {
-	
+
 	@Autowired
 	private SecurityUserService service;
 	
@@ -37,7 +39,7 @@ public class SecurityConfigration {
 		http.formLogin(
 				login -> login
 					.loginPage("/user/login")
-					.defaultSuccessUrl("/user/loginSuccess")
+					.defaultSuccessUrl("/user/loginSuccess", true)
 					.failureUrl("/user/login?success=100")
 					.usernameParameter("uid")
 					.passwordParameter("pass")
@@ -60,5 +62,10 @@ public class SecurityConfigration {
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
+	}
+
+	@Bean
+	public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+		return config.getAuthenticationManager();
 	}
 }
